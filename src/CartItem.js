@@ -1,37 +1,61 @@
 import React from "react";
+// import Cart from "./Cart";
 
 class CartItem extends React.Component {
     constructor(){
         super()
         this.state = {
-            title:'Phone',
-            price: 9999,
-            Qty:1
+            title:'Mobile Phone',
+            price: 19999,
+            Qty:1,
+            id:1
         }
+      
 
     }
      increseQuantity =() => {
-        console.log(this.state);
+        // console.log(this.state);
         // this.state.Qty +=1;
-        this.setState({
-            Qty:this.state.Qty +1,
+        // this.setState({
+        //     Qty:this.state.Qty +1,
+        // })
+
+        // if preveious state requires then this state use
+        this.setState((prevState)=>{
+            return{
+                Qty:prevState.Qty +1
+            }
         })
      }
      decreaseQuantity=()=>{
-        console.log(this.state)
+        const{Qty} = this.state;
+
+        if(Qty === 0){
+            return ;
+
+        }
+        // console.log(this.state)
         this.setState({
             Qty:this.state.Qty -1,
         })
      }
      deleteQuantity = ()=>{
+
+        // const{Qty} = this.state +0;
+
+        if(Qty=>0){
+            return 0;
+        }
+         console.log("this")
         this.setState({
-            Qty: this.state.Qty +-0
+            Qty: this.state.Qty ,
     
         })
      }
      
     render()  {
-        const {title,price,Qty} = this.state;
+        console.log(this.props)
+        const {title,price,Qty} = this.props.product;
      return(
         <div className="cartItem">
             <div className="left-block">
